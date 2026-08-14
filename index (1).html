@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniket Kumar — Data Analyst</title>
+<meta name="description" content="Aniket Kumar — Data Analyst & aspiring Data Scientist. Python, SQL, Power BI, Machine Learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F3F5F0;
+    --surface: #FFFFFF;
+    --ink: #14181A;
+    --ink-soft: #545C56;
+    --line: #DFE3DA;
+    --accent: #1F7A5C;
+    --accent-soft: #DCEFE4;
+    --amber: #D9822B;
+    --amber-soft: #F7E6D0;
+    --radius: 14px;
+    --display: 'Fraunces', serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  ::selection{background:var(--accent); color:#fff;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* NAV */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,245,240,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1080px; margin:0 auto;
+  }
+  .nav-mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-weight:600; font-size:14px;
+    text-decoration:none;
+  }
+  .nav-mark .tile{
+    width:30px; height:30px; border-radius:8px;
+    background:var(--ink); color:var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:600; font-size:14px;
+  }
+  nav.links{display:flex; gap:28px; font-size:14px;}
+  nav.links a{text-decoration:none; color:var(--ink-soft); font-weight:500; transition:color .15s;}
+  nav.links a:hover{color:var(--accent);}
+  .nav-cta{
+    font-family:var(--mono); font-size:12px; font-weight:600;
+    background:var(--ink); color:var(--bg);
+    padding:9px 16px; border-radius:999px; text-decoration:none;
+    letter-spacing:.02em;
+    transition:background .15s;
+  }
+  .nav-cta:hover{background:var(--accent);}
+  .nav-toggle{display:none;}
+
+  /* HERO */
+  .hero{padding:76px 0 40px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--accent); display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:''; width:8px; height:8px; border-radius:50%; background:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft);
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+
+  h1.name{
+    font-family:var(--display); font-weight:600; font-size:clamp(42px, 7vw, 78px);
+    line-height:0.98; letter-spacing:-0.01em; margin-bottom:18px;
+  }
+  .role-line{
+    font-size:clamp(17px, 2vw, 21px); color:var(--ink-soft); max-width:640px; margin-bottom:34px;
+  }
+  .role-line strong{color:var(--ink); font-weight:600;}
+
+  .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:52px;}
+  .btn{
+    font-family:var(--body); font-weight:600; font-size:14.5px;
+    padding:12px 22px; border-radius:999px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--ink); color:var(--bg);}
+  .btn-primary:hover{box-shadow:0 6px 20px rgba(20,24,26,.2);}
+  .btn-outline{background:transparent; color:var(--ink); border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* KPI STRIP */
+  .kpi-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
+  }
+  .kpi{
+    background:var(--surface); padding:22px 20px;
+  }
+  .kpi .num{
+    font-family:var(--mono); font-size:clamp(24px,3vw,32px); font-weight:600; color:var(--accent);
+    display:block; margin-bottom:6px;
+  }
+  .kpi .label{font-size:12.5px; color:var(--ink-soft); line-height:1.4;}
+
+  @media (max-width:720px){
+    .kpi-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  /* SECTION SHARED */
+  section{padding:84px 0;}
+  section.alt{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:20px; margin-bottom:44px; flex-wrap:wrap;}
+  .section-num{font-family:var(--mono); font-size:13px; color:var(--ink-soft);}
+  h2.section-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(28px,4vw,38px); letter-spacing:-.01em;
+  }
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:56px;}
+  .about-grid p{font-size:16.5px; color:var(--ink-soft); margin-bottom:16px; max-width:56ch;}
+  .about-grid p strong{color:var(--ink);}
+  .status-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; height:fit-content;
+  }
+  .status-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:14px;}
+  .status-row:last-child{border-bottom:none;}
+  .status-row span:first-child{color:var(--ink-soft);}
+  .status-row span:last-child{font-family:var(--mono); font-weight:600; text-align:right;}
+
+  @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
+
+  /* EXPERIENCE */
+  .exp-item{
+    display:grid; grid-template-columns:200px 1fr; gap:32px;
+    padding:30px 0; border-top:1px solid var(--line);
+  }
+  .exp-item:last-child{border-bottom:1px solid var(--line);}
+  .exp-date{font-family:var(--mono); font-size:13px; color:var(--ink-soft); padding-top:4px;}
+  .exp-role{font-family:var(--display); font-size:21px; font-weight:600; margin-bottom:4px;}
+  .exp-org{font-size:14.5px; color:var(--accent); font-weight:600; margin-bottom:14px;}
+  .exp-item ul{list-style:none;}
+  .exp-item li{
+    position:relative; padding-left:20px; margin-bottom:9px; color:var(--ink-soft); font-size:15px; max-width:64ch;
+  }
+  .exp-item li::before{content:'—'; position:absolute; left:0; color:var(--amber);}
+
+  @media (max-width:720px){ .exp-item{grid-template-columns:1fr; gap:8px;} }
+
+  /* PROJECTS */
+  .project-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  .project-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px; border-left:3px solid var(--accent);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .project-card:hover{transform:translateY(-3px); box-shadow:0 10px 30px rgba(20,24,26,.08);}
+  .project-card.amber{border-left-color:var(--amber);}
+  .project-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:10px;}
+  .project-title{font-family:var(--display); font-size:19px; font-weight:600;}
+  .project-stat{
+    font-family:var(--mono); font-size:11.5px; font-weight:600; color:var(--accent);
+    background:var(--accent-soft); padding:4px 9px; border-radius:999px; white-space:nowrap;
+  }
+  .project-card.amber .project-stat{color:var(--amber); background:var(--amber-soft);}
+  .project-desc{font-size:14.5px; color:var(--ink-soft); margin-bottom:16px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:7px;}
+  .tag{
+    font-family:var(--mono); font-size:11px; color:var(--ink-soft);
+    border:1px solid var(--line); padding:4px 9px; border-radius:6px;
+  }
+  .project-links{margin-top:16px; display:flex; gap:14px;}
+  .project-links a{font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink);}
+  .project-links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  @media (max-width:800px){ .project-grid{grid-template-columns:1fr;} }
+
+  .add-project-hint{
+    margin-top:26px; font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);
+    border:1px dashed var(--line); border-radius:var(--radius); padding:16px 20px;
+  }
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .skill-group h3{
+    font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); margin-bottom:14px;
+  }
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-size:13.5px; background:var(--surface); border:1px solid var(--line);
+    padding:7px 13px; border-radius:999px;
+  }
+  @media (max-width:800px){ .skills-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .skills-grid{grid-template-columns:1fr;} }
+
+  /* EDU + CERTS */
+  .edu-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .edu-entry{margin-bottom:22px;}
+  .edu-entry .deg{font-weight:600; font-size:16px; margin-bottom:3px;}
+  .edu-entry .school{color:var(--ink-soft); font-size:14px; margin-bottom:3px;}
+  .edu-entry .when{font-family:var(--mono); font-size:12.5px; color:var(--accent);}
+  .cert-entry{
+    display:flex; gap:12px; padding:14px 0; border-top:1px solid var(--line); font-size:14.5px;
+  }
+  .cert-entry:last-child{padding-bottom:0;}
+  .cert-org{font-weight:600; min-width:130px;}
+  @media (max-width:720px){ .edu-grid{grid-template-columns:1fr;} }
+
+  /* CONTACT */
+  footer{padding:90px 0 60px;}
+  .contact-title{
+    font-family:var(--display); font-weight:600; font-size:clamp(32px,5vw,52px);
+    letter-spacing:-.01em; margin-bottom:24px; max-width:14ch;
+  }
+  .contact-row{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:56px;}
+  .foot-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    padding-top:26px; border-top:1px solid var(--line);
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);
+  }
+
+  @media (max-width:640px){
+    .nav-inner nav.links{display:none;}
+    section{padding:56px 0;}
+    .hero{padding:56px 0 32px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="tile">AK</span> Aniket Kumar</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="mailto:aniketak9803@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Open to data analyst & ML roles</div>
+      <h1 class="name">Aniket Kumar</h1>
+      <p class="role-line">
+        <strong>Data Analyst</strong> turning raw, messy datasets into decisions —
+        with Python, SQL and Power BI, and a growing focus on
+        <strong>machine learning</strong> and predictive modeling.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:aniketak9803@gmail.com">Email me</a>
+        <a class="btn btn-outline" href="#" id="github-link">GitHub ↗</a>
+        <a class="btn btn-outline" href="#" id="linkedin-link">LinkedIn ↗</a>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi"><span class="num">10K+</span><span class="label">records analyzed & cleaned across projects</span></div>
+        <div class="kpi"><span class="num">90%+</span><span class="label">accuracy on stroke-risk prediction model</span></div>
+        <div class="kpi"><span class="num">40%</span><span class="label">manual effort cut with an automated expense app</span></div>
+        <div class="kpi"><span class="num">30%</span><span class="label">faster ML dev time through better workflows</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">About</h2>
+        <span class="section-num">01 / Summary</span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>I'm a <strong>Data Analyst</strong> with hands-on experience across the full analysis pipeline — cleaning messy data, running exploratory analysis, and building dashboards that people actually use to make decisions.</p>
+          <p>Lately I've been going deeper into <strong>machine learning</strong>: feature engineering, model tuning, and shipping small predictive apps end-to-end rather than leaving models in a notebook.</p>
+          <p>I like tools that make data legible fast — <strong>Power BI</strong> for stakeholders, <strong>Python</strong> for everything else, and <strong>Streamlit</strong> when an idea needs to become something people can click through.</p>
+        </div>
+        <div class="status-card">
+          <div class="status-row"><span>Currently</span><span>B.Tech CSE, final year</span></div>
+          <div class="status-row"><span>Graduating</span><span>09 / 2026</span></div>
+          <div class="status-row"><span>Based in</span><span>Chandigarh, IN</span></div>
+          <div class="status-row"><span>Open to</span><span>Full-time / Intern</span></div>
+          <div class="status-row"><span>Focus</span><span>Data / ML</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Experience</h2>
+        <span class="section-num">02 / Work</span>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">07/2025 — 12/2025<br>Mohali, Chandigarh</div>
+        <div>
+          <div class="exp-role">Data Science Intern</div>
+          <div class="exp-org">Meander Software Pvt. Ltd.</div>
+          <ul>
+            <li>Built and deployed an interactive Streamlit app applying data manipulation and fairness algorithms to automate expense-splitting workflows.</li>
+            <li>Designed a stroke-risk prediction model with Scikit-learn, reaching 90%+ accuracy through feature engineering and hyperparameter tuning.</li>
+            <li>Worked with senior data scientists to turn business requirements into ML solutions, cutting model-development and analysis time by 30%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-date">12/2024 — 02/2025<br>New Delhi (Remote)</div>
+        <div>
+          <div class="exp-role">Data Analyst Intern</div>
+          <div class="exp-org">Unified Mentor</div>
+          <ul>
+            <li>Analyzed 10,000+ records through data cleaning and exploratory analysis to surface trends, patterns, and data-quality issues.</li>
+            <li>Ran EDA across multiple datasets and built visualizations to uncover actionable relationships in the data.</li>
+            <li>Developed 5+ visual reports and dashboards communicating KPIs and findings for decision-making.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (data-driven — see the PROJECTS array in the script at the bottom) -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Projects</h2>
+        <span class="section-num">03 / Selected work</span>
+      </div>
+      <div class="project-grid" id="project-grid"><!-- filled by JS from PROJECTS array --></div>
+      <div class="add-project-hint">
+        Want to add a new project? Scroll to the bottom of this file, find the <strong>PROJECTS</strong> list,
+        copy one block, and change the text between quotes. No coding needed — full instructions are in
+        HOW_TO_ADD_PROJECTS.txt.
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Skills</h2>
+        <span class="section-num">04 / Toolkit</span>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <div class="chip-row"><span class="chip">Python</span><span class="chip">SQL</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Data Analysis</h3>
+          <div class="chip-row">
+            <span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">Excel</span>
+            <span class="chip">Data Cleaning</span><span class="chip">EDA</span><span class="chip">Statistical Analysis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Business Intelligence</h3>
+          <div class="chip-row">
+            <span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Dashboards</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Visualization</h3>
+          <div class="chip-row"><span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">Plotly</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Machine Learning</h3>
+          <div class="chip-row"><span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Feature Engineering</span></div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools & AI</h3>
+          <div class="chip-row">
+            <span class="chip">Jupyter</span><span class="chip">Git/GitHub</span><span class="chip">Streamlit</span>
+            <span class="chip">ChatGPT</span><span class="chip">Claude</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + CERTS -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Education & Certificates</h2>
+        <span class="section-num">05 / Background</span>
+      </div>
+      <div class="edu-grid">
+        <div>
+          <div class="edu-entry">
+            <div class="deg">Bachelor of Technology — Computer Science & Engineering</div>
+            <div class="school">Quest Group of Institution, Mohali, Chandigarh (affiliated to I.K.G. Punjab Technical University)</div>
+            <div class="when">09/2022 — 09/2026</div>
+          </div>
+          <div class="edu-entry">
+            <div class="deg">Senior Secondary Education — Science</div>
+            <div class="school">P.P.M School, Bihar</div>
+            <div class="when">07/2020 — 07/2022</div>
+          </div>
+        </div>
+        <div>
+          <div class="cert-entry"><span class="cert-org">GeeksforGeeks</span><span>Complete Machine Learning and Data Science</span></div>
+          <div class="cert-entry"><span class="cert-org">Accenture</span><span>Data Analytics and Visualization — Job Simulation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact" class="alt">
+    <div class="wrap">
+      <h2 class="contact-title">Let's talk data.</h2>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="mailto:aniketak9803@gmail.com">aniketak9803@gmail.com</a>
+        <a class="btn btn-outline" href="tel:+918092259803">+91 80922 59803</a>
+        <a class="btn btn-outline" href="#" id="github-link-2">GitHub ↗</a>
+        <a class="btn btn-outline" href="#" id="linkedin-link-2">LinkedIn ↗</a>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> Aniket Kumar</span>
+        <span>Built with intent, updated by hand.</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* =====================================================================
+     EDIT BELOW THIS LINE TO UPDATE YOUR SITE — NO CODING KNOWLEDGE NEEDED
+     =====================================================================
+     1. Keep the curly braces { } and quotes " " exactly where they are.
+     2. Only change the TEXT that sits between the quotes.
+     3. To add a new project, copy one whole { ... } block (including the
+        comma after it), paste it before the closing ], and edit the text.
+     4. Save the file and refresh the page in your browser to see changes.
+     ===================================================================== */
+
+  // --- YOUR LINKS ---------------------------------------------------
+  // Replace the # below with your real profile URLs, e.g.
+  // "https://github.com/yourusername" and "https://linkedin.com/in/yourusername"
+  const LINKS = {
+    github: "#",
+    linkedin: "#"
+  };
+
+  // --- YOUR PROJECTS --------------------------------------------------
+  // "stat" is the small highlight badge shown top-right of each card.
+  // "tags" is the list of tools/technologies used — add or remove freely.
+  // "link" is the URL to the live project or its GitHub repo (or "#" if none yet).
+  const PROJECTS = [
+    {
+      title: "Heart Stroke Prediction App",
+      stat: "90%+ accuracy",
+      desc: "A machine learning model for stroke-risk prediction, built with Scikit-learn — covers preprocessing, feature selection, and model optimization.",
+      tags: ["Python", "Scikit-learn", "Feature Engineering"],
+      link: "#"
+    },
+    {
+      title: "Bill Splitter for Roommates",
+      stat: "-40% manual effort",
+      desc: "A Streamlit expense-splitting app with real-time calculations and automated allocation, built to remove the pain of splitting shared bills.",
+      tags: ["Python", "Streamlit", "App Design"],
+      link: "#"
+    },
+    {
+      title: "EV Sales Data — Regional Dashboard",
+      stat: "10K+ records",
+      desc: "Analyzed EV sales records across multiple regions and built an interactive Power BI dashboard with 8+ KPIs to surface sales trends.",
+      tags: ["Power BI", "DAX", "Data Viz"],
+      link: "#"
+    },
+    {
+      title: "Iris Species Classifier",
+      stat: "95% accuracy",
+      desc: "A classification model built with Scikit-learn to predict Iris flower species, covering data preprocessing and model evaluation.",
+      tags: ["Python", "Scikit-learn", "Classification"],
+      link: "#"
+    }
+
+    // --- TO ADD A NEW PROJECT: copy from the { below down to the } above,
+    // paste it here, and fill in your own details. Example:
+    //
+    // ,{
+    //   title: "Your New Project Name",
+    //   stat: "Key result here",
+    //   desc: "One or two sentences describing what it does and how you built it.",
+    //   tags: ["Tool 1", "Tool 2"],
+    //   link: "#"
+    // }
+  ];
+
+  /* =====================================================================
+     DO NOT EDIT BELOW THIS LINE — this just draws the page using the
+     information you entered above.
+     ===================================================================== */
+
+  document.getElementById('github-link').href = LINKS.github;
+  document.getElementById('github-link-2').href = LINKS.github;
+  document.getElementById('linkedin-link').href = LINKS.linkedin;
+  document.getElementById('linkedin-link-2').href = LINKS.linkedin;
+
+  const grid = document.getElementById('project-grid');
+  PROJECTS.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'project-card' + (i % 2 === 1 ? ' amber' : '');
+    card.innerHTML = `
+      <div class="project-top">
+        <div class="project-title">${p.title}</div>
+        <div class="project-stat">${p.stat}</div>
+      </div>
+      <div class="project-desc">${p.desc}</div>
+      <div class="tag-row">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      <div class="project-links"><a href="${p.link}" target="_blank" rel="noopener">View project ↗</a></div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>

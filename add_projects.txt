@@ -1,0 +1,87 @@
+HOW TO UPDATE YOUR PORTFOLIO — NO CODING NEEDED
+=================================================
+
+Your whole site lives in one file: index.html
+Open it with any plain text editor (Notepad, TextEdit, or VS Code if you have it —
+just don't open it by double-clicking, which opens it in a browser instead).
+
+--------------------------------------------------
+1) ADD YOUR REAL LINKEDIN & GITHUB LINKS
+--------------------------------------------------
+Find this near the bottom of the file (search for "LINKS"):
+
+    const LINKS = {
+      github: "#",
+      linkedin: "#"
+    };
+
+Replace the # between the quotes with your real URLs, e.g.:
+
+    const LINKS = {
+      github: "https://github.com/yourusername",
+      linkedin: "https://linkedin.com/in/yourusername"
+    };
+
+--------------------------------------------------
+2) ADD A NEW PROJECT
+--------------------------------------------------
+Find the block that starts with "const PROJECTS = [" — you'll see a list of
+projects, each one looking like this:
+
+    {
+      title: "Heart Stroke Prediction App",
+      stat: "90%+ accuracy",
+      desc: "A machine learning model for stroke-risk prediction...",
+      tags: ["Python", "Scikit-learn", "Feature Engineering"],
+      link: "#"
+    }
+
+To add a new one:
+  1. Copy one whole block, from the { to the matching }
+  2. Paste it right after the last project's closing }, and put a comma
+     right before your pasted block, like this:
+
+    {
+      title: "Iris Species Classifier",
+      ...
+    }
+    ,{
+      title: "Your New Project Name",
+      stat: "Key result — e.g. 'Cut load time by 50%'",
+      desc: "One or two sentences on what it does and how you built it.",
+      tags: ["Tool 1", "Tool 2"],
+      link: "https://github.com/yourusername/your-project"
+    }
+
+  3. Only change the text INSIDE the quotes " " — leave the punctuation
+     (commas, brackets, colons) exactly where it is.
+  4. Save the file.
+
+--------------------------------------------------
+3) EDIT ANY OTHER TEXT (About, Experience, Skills, etc.)
+--------------------------------------------------
+Everything above the "EDIT BELOW THIS LINE" marker near the bottom of the
+file is plain text sitting inside the page — you can find and edit things
+like your summary paragraph, experience bullet points, or skills directly
+in that text, the same way you'd edit a Word document. Just don't remove
+any of the < > tags around the text.
+
+--------------------------------------------------
+4) SEE YOUR CHANGES
+--------------------------------------------------
+Just double-click index.html to open it in your browser and preview it
+anytime — no server or install needed.
+
+--------------------------------------------------
+5) PUBLISH / RE-PUBLISH TO THE INTERNET (Vercel, no coding)
+--------------------------------------------------
+  1. Go to vercel.com and sign up (free) — you can use your email or GitHub.
+  2. On your dashboard, click "Add New" → "Project".
+  3. Choose "Deploy" via drag-and-drop and drag your whole "portfolio"
+     folder (the one containing index.html) into the browser window.
+  4. Vercel gives you a live link like aniket-kumar.vercel.app instantly.
+  5. Whenever you edit index.html and want to update the live site, go back
+     to your Vercel project page and drag the folder in again — it
+     redeploys in seconds. (Optional: connect a GitHub repo instead, so it
+     redeploys automatically every time you save — ask me if you want help
+     setting that up later.)
