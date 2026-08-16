@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #F3F5F0;
-    --surface: #FFFFFF;
-    --ink: #14181A;
-    --ink-soft: #545C56;
-    --line: #DFE3DA;
-    --accent: #1F7A5C;
-    --accent-soft: #DCEFE4;
-    --amber: #D9822B;
-    --amber-soft: #F7E6D0;
+    --bg: #09090B;
+    --surface: #18181B;
+    --ink: #FAFAFA;
+    --ink-soft: #A1A1AA;
+    --line: #27272A;
+    --accent: #F97316;
+    --accent-soft: #3A2412;
+    --amber: #FB923C;
+    --amber-soft: #3A2A16;
     --radius: 14px;
     --display: 'Fraunces', serif;
     --body: 'Work Sans', sans-serif;
@@ -48,7 +48,7 @@
   /* NAV */
   header.nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(243,245,240,0.85);
+    background:rgba(9,9,11,0.85);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
@@ -82,6 +82,12 @@
 
   /* HERO */
   .hero{padding:76px 0 40px;}
+  .hero-top{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap-reverse;}
+  .profile-photo{
+    width:120px; height:120px; border-radius:50%; object-fit:cover;
+    border:3px solid var(--surface); box-shadow:0 4px 16px rgba(20,24,26,.12);
+  }
+  @media (max-width:640px){ .profile-photo{width:88px; height:88px;} }
   .eyebrow{
     font-family:var(--mono); font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
     color:var(--accent); display:flex; align-items:center; gap:10px; margin-bottom:22px;
@@ -116,6 +122,8 @@
   .btn-outline:hover{border-color:var(--accent); color:var(--accent);}
 
   /* KPI STRIP */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
   .kpi-grid{
     display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
     background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden;
@@ -275,8 +283,13 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">Open to data analyst roles</div>
-      <h1 class="name">Aniket Kumar</h1>
+      <div class="hero-top">
+        <div>
+          <div class="eyebrow">Open to Data Analyst roles</div>
+          <h1 class="name">Aniket Kumar</h1>
+        </div>
+        <img src="profile.jpg" alt="Aniket Kumar" class="profile-photo">
+      </div>
       <p class="role-line">
         <strong>Data Analyst</strong> turning raw, messy datasets into decisions —
         with Python, SQL and Power BI, and a growing focus on
@@ -290,15 +303,15 @@
 
       <div class="kpi-grid">
         <div class="kpi"><span class="num">10K+</span><span class="label">records analyzed & cleaned across projects</span></div>
-        <div class="kpi"><span class="num">90%+</span><span class="label">accuracy on stroke-risk prediction model</span></div>
+        <div class="kpi"><span class="num">98.8%</span><span class="label">accuracy on stroke-risk prediction</span></div>
         <div class="kpi"><span class="num">40%</span><span class="label">manual effort cut with an automated expense app</span></div>
-        <div class="kpi"><span class="num">30%</span><span class="label">faster ML dev time through better workflows</span></div>
+        <div class="kpi"><span class="num">30%</span><span class="label">faster development time through better workflows</span></div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2 class="section-title">About</h2>
@@ -306,12 +319,12 @@
       </div>
       <div class="about-grid">
         <div>
-          <p>I'm a <strong>Data Analyst</strong> with hands-on experience across the full analysis pipeline — cleaning messy data, running exploratory analysis, and building dashboards that people actually use to make decisions.</p>
-          <p>Lately I've been going deeper into <strong>machine learning</strong>: feature engineering, model tuning, and shipping small predictive apps end-to-end rather than leaving models in a notebook.</p>
-          <p>I like tools that make data legible fast — <strong>Power BI</strong> for stakeholders, <strong>Python</strong> for everything else, and <strong>Streamlit</strong> when an idea needs to become something people can click through.</p>
+          <p>I'm a <strong>Data Analyst</strong>. I clean data, run analysis, and build dashboards.</p>
+          <p>I've also built a few <strong>machine learning</strong> projects on the side — including a stroke-risk prediction model that hit 98.8% accuracy — using Scikit-learn.</p>
+          <p>Tools I use: <strong>Python</strong> and <strong>SQL</strong> for analysis, <strong>Power BI</strong> for dashboards, <strong>Streamlit</strong> when I want to turn something into an actual app.</p>
         </div>
         <div class="status-card">
-          <div class="status-row"><span>Education</span><span>Bachelor of Technology in Computer Science and Technology 2022 - 2026</span></div>
+          <div class="status-row"><span>Education</span><span>Bachelor of Technology 2022 - 2026</span></div>
           <div class="status-row"><span>Based in</span><span>India</span></div>
           <div class="status-row"><span>Open to</span><span>Full-time</span></div>
           <div class="status-row"><span>Focus</span><span>Data</span></div>
@@ -321,7 +334,7 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience" class="alt">
+  <section id="experience" class="alt reveal">
     <div class="wrap">
       <div class="section-head">
         <h2 class="section-title">Experience</h2>
@@ -334,9 +347,9 @@
           <div class="exp-role">Data Science Intern</div>
           <div class="exp-org">Meander Software Pvt. Ltd.</div>
           <ul>
-            <li>Built and deployed an interactive Streamlit app applying data manipulation and fairness algorithms to automate expense-splitting workflows.</li>
-            <li>Designed a stroke-risk prediction model with Scikit-learn, reaching 90%+ accuracy through feature engineering and hyperparameter tuning.</li>
-            <li>Worked with senior data scientists to turn business requirements into ML solutions, cutting model-development and analysis time by 30%.</li>
+            <li>Cut manual expense-splitting effort by building a Streamlit app that automated the whole workflow with fairness algorithms baked in.</li>
+            <li>Hit 98.8% accuracy on a stroke-risk prediction model — got there through feature engineering and hyperparameter tuning with Scikit-learn.</li>
+            <li>Cut model-development and analysis time by 30%, working with senior data scientists to turn business asks into ML solutions.</li>
           </ul>
         </div>
       </div>
@@ -347,9 +360,9 @@
           <div class="exp-role">Data Analyst Intern</div>
           <div class="exp-org">Unified Mentor</div>
           <ul>
-            <li>Analyzed 10,000+ records through data cleaning and exploratory analysis to surface trends, patterns, and data-quality issues.</li>
-            <li>Ran EDA across multiple datasets and built visualizations to uncover actionable relationships in the data.</li>
-            <li>Developed 5+ visual reports and dashboards communicating KPIs and findings for decision-making.</li>
+            <li>Cleaned and analyzed 10,000+ records, surfacing trends, patterns, and data-quality issues along the way.</li>
+            <li>Uncovered actionable relationships in the data by running EDA across multiple datasets and building visualizations.</li>
+            <li>Built 5+ dashboards that stakeholders actually used to track KPIs and make decisions.</li>
           </ul>
         </div>
       </div>
@@ -357,7 +370,7 @@
   </section>
 
   <!-- PROJECTS (data-driven — see the PROJECTS array in the script at the bottom) -->
-  <section id="projects">
+  <section id="projects" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2 class="section-title">Projects</h2>
@@ -373,7 +386,7 @@
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="alt">
+  <section id="skills" class="alt reveal">
     <div class="wrap">
       <div class="section-head">
         <h2 class="section-title">Skills</h2>
@@ -417,7 +430,7 @@
   </section>
 
   <!-- EDUCATION + CERTS -->
-  <section id="education">
+  <section id="education" class="reveal">
     <div class="wrap">
       <div class="section-head">
         <h2 class="section-title">Education & Certificates</h2>
@@ -433,7 +446,7 @@
           <div class="edu-entry">
             <div class="deg">Senior Secondary Education — Science</div>
             <div class="school">P.P.M School, Bihar</div>
-            <div class="when">07/2020 — 07/2022</div>
+            <div class="when">2020 — 2022</div>
           </div>
         </div>
         <div>
@@ -445,7 +458,7 @@
   </section>
 
   <!-- CONTACT -->
-  <footer id="contact" class="alt">
+  <footer id="contact" class="alt reveal">
     <div class="wrap">
       <h2 class="contact-title">Let's talk data.</h2>
       <div class="contact-row">
@@ -465,6 +478,36 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+  // Fade sections in as they scroll into view
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Count-up animation for the KPI numbers
+  const kpiObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const raw = el.textContent.trim();
+      const match = raw.match(/[\d.]+/);
+      if (!match) return;
+      const target = parseFloat(match[0]);
+      const suffix = raw.replace(match[0], '');
+      let current = 0;
+      const step = Math.max(target / 40, 0.5);
+      const tick = () => {
+        current = Math.min(current + step, target);
+        el.textContent = (Number.isInteger(target) ? Math.floor(current) : current.toFixed(1)) + suffix;
+        if (current < target) requestAnimationFrame(tick);
+      };
+      tick();
+      kpiObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.kpi .num').forEach(el => kpiObserver.observe(el));
 
   /* =====================================================================
      EDIT BELOW THIS LINE TO UPDATE YOUR SITE — NO CODING KNOWLEDGE NEEDED
@@ -491,7 +534,7 @@
   const PROJECTS = [
     {
       title: "Heart Stroke Prediction App",
-      stat: "90%+ accuracy",
+      stat: "98.8% accuracy",
       desc: "A machine learning model for stroke-risk prediction, built with Scikit-learn — covers preprocessing, feature selection, and model optimization.",
       tags: ["Python", "Scikit-learn", "Feature Engineering"],
       link: "https://github.com/Aniket123kumar/HeartDiseasePrediction"
@@ -499,7 +542,7 @@
     {
       title: "Bill Splitter for Roommates",
       stat: "-40% manual effort",
-      desc: "A Streamlit expense-splitting app with real-time calculations and automated allocation, built to remove the pain of splitting shared bills.",
+      desc: "Built to solve an actual problem with my own roommates — splitting shared bills was a mess of manual math, so I built a Streamlit app with real-time calculations and automated allocation instead.",
       tags: ["Python", "Streamlit", "App Design"],
       link: "https://github.com/Aniket123kumar/Bill-splitter"
     },
