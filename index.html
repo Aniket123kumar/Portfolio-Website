@@ -161,7 +161,7 @@
   .status-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:14px;}
   .status-row:last-child{border-bottom:none;}
   .status-row span:first-child{color:var(--ink-soft);}
-  .status-row span:last-child{font-family:var(--mono); font-weight:600; text-align:right;}
+  .status-row span:last-child{font-family:var(--mono); font-weight:600; text-align:right; white-space:nowrap; font-size:13px;}
 
   @media (max-width:800px){ .about-grid{grid-template-columns:1fr;} }
 
@@ -327,7 +327,7 @@
           <div class="status-row"><span>Education</span><span>Bachelor of Technology 2022 - 2026</span></div>
           <div class="status-row"><span>Based in</span><span>India</span></div>
           <div class="status-row"><span>Open to</span><span>Full-time</span></div>
-          <div class="status-row"><span>Focus</span><span>Data</span></div>
+          <div class="status-row"><span>Focus</span><span>Analyst roles</span></div>
         </div>
       </div>
     </div>
@@ -377,11 +377,6 @@
         <span class="section-num">03 / Selected work</span>
       </div>
       <div class="project-grid" id="project-grid"><!-- filled by JS from PROJECTS array --></div>
-      <div class="add-project-hint">
-        Want to add a new project? Scroll to the bottom of this file, find the <strong>PROJECTS</strong> list,
-        copy one block, and change the text between quotes. No coding needed — full instructions are in
-        HOW_TO_ADD_PROJECTS.txt.
-      </div>
     </div>
   </section>
 
